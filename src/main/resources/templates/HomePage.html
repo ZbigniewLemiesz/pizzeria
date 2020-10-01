@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Pizzeria</title>
+</head>
+<body>
+<h1>Witaj w Pizzerii</h1>
+    <img th:src="@{/images/pizzeria_logo.png}"/>
+
+    <a th:href="@{/order}"/>Przygotuj zamówienie</a> |
+    <a th:href="@{/authorization}"/>Logowanie</a> |
+    <a th:href="@{/register}" />Rejestracja</a>
+
+</body>
+</html>
