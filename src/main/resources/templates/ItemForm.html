@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Pizzeria</title>
+    <link rel="stylesheet" th:href="@{/static/styles.css}" />
+</head>
+<body>
+<h2>Wybierz dania dla siebie</h2>
+<img th:src="@{/images/pizzeria_logo.png}"/>
+<div class="container">
+    <div class="items" >
+
+            <div th:each="item :${itemList}">
+                <form action="/order/addItems" method="get">
+                    <h3 th:text="${item.name}" />
+                    <p th:text="${item.description}"/>
+                    <p th:text="${item.price}"/>
+                    <input type="hidden" name="productId" th:value="${item.id}">
+                    <input type="number" step="1"  name = "quantity" placeholder="wpisz ile chcesz porcji">szt<br>
+                    <button>Dodaj do koszyka</button>
+                </form>
+            </div>
+
+    </div>
+    <h2> Zamów </h2>
+    <div class="shoppin_cart" >
+
+        <form action="/order/place" method="get">
+            <button>Złóż zamówienie</button>
+        </form>
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+</div>
+
+</body>
+</html>
