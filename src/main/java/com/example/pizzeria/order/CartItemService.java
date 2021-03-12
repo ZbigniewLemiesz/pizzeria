@@ -15,12 +15,12 @@ public class CartItemService {
         this.cartItemRepository = cartItemRepository;
     }
 
-    public void saveCartItemsFromOrder(Order order){
-        for (CartItem i : order.getCarts()) {
-            CartItemKey cartItemKey = new CartItemKey(i.getProduct().getId(), i.getOrder().getId());
-            CartItem cartItem = new CartItem(cartItemKey,i.getQuantity(), i.getProduct(), i.getOrder());
-            cartItemRepository.save(cartItem);
-        }
-    }
+ //   public void saveCartItemsFromOrder(Order order){
+//        for (CartItem i : order.getCarts()) {
+//            CartItemKey cartItemKey = new CartItemKey(i.getProduct().getId(), i.getOrder().getId());
+//            CartItem cartItem = new CartItem(cartItemKey,i.getQuantity(), i.getProduct(), i.getOrder());
+//            cartItemRepository.save(cartItem);
+ //       }
+  //  }
 
 }

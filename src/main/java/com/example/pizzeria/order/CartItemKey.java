@@ -12,11 +12,12 @@ import java.io.Serializable;
 @RequiredArgsConstructor
 public class CartItemKey implements Serializable {
 
-    @Column(name = "products_id")
+    @Column(name = "product_id")
     Long productID;
 
-    @Column(name = "orders_id")
+    @Column(name = "order_id")
     Long orderID;
+
 
     public CartItemKey(Long productID, Long orderID) {
         this.productID = productID;
