@@ -1,5 +1,4 @@
 package com.example.pizzeria.order;
-
 import com.example.pizzeria.product.Product;
 import com.example.pizzeria.product.ProductDTO;
 import com.example.pizzeria.product.ProductService;
@@ -9,8 +8,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.LinkedList;
+import java.math.BigDecimal;
 import java.util.List;
+
 
 @Controller
 public class OrderController {
@@ -29,8 +29,7 @@ public class OrderController {
 
 
     @GetMapping("/order")
-    public String
-    displayItems(Model model) {
+    public String displayItems(Model model) {
         List<ProductDTO> itemList = productService.findProducts();
         model.addAttribute("itemList", itemList);
         return "ItemForm";
@@ -40,24 +39,23 @@ public class OrderController {
     public String addItemsToThaCart(@RequestParam Integer quantity,
                                     @RequestParam Long productId) {
         Product product = productService.getProduct(productId);
-        CartItem cartItem = new CartItem();
-        cartItem.setProduct(product);
-        cartItem.setQuantity(quantity);
-        shoppingCart.addCartItem(cartItem);
+        CartItemDTO cartItemDTO = new CartItemDTO();
+        cartItemDTO.setProduct(product);
+        cartItemDTO.setQuantity(quantity);
+        shoppingCart.addCartItem(cartItemDTO);
         //------------------------------------
-        System.out.println(shoppingCart.getCartItems().toString());
+        System.out.println(shoppingCart.getCartItemDTOS().toString());
         System.out.println("--------------------" + shoppingCart.getTotalPrice().toString());
         return "redirect:/order";
     }
 
-    @GetMapping("/order/place")
-    public String placeOrder() {
-        Order order = orderService.saveNewOrder();
-        orderService.updateOrderFromShoppingCart(shoppingCart, order);
-        cartItemService.saveCartItemsFromOrder(order);
-        orderService.save(order);
-
-        return "HomePage";
+    @GetMapping("/order/cart")
+    public String showCart(Model model) {
+        List<CartItemDTO> cartItemDTOS = shoppingCart.getCartItemDTOS();
+        model.addAttribute("itemList", cartItemDTOS);
+        BigDecimal totalPrice = shoppingCart.getTotalPrice();
+        model.addAttribute("totalPrice",totalPrice);
+        return "ShoppingCart";
     }
 
 

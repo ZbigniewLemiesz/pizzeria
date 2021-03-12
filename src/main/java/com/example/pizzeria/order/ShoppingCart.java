@@ -1,6 +1,5 @@
 package com.example.pizzeria.order;
 
-import com.example.pizzeria.product.Product;
 import lombok.Data;
 
 import java.math.BigDecimal;
@@ -9,14 +8,15 @@ import java.util.List;
 
 @Data
 public class ShoppingCart {
-    private List<CartItem> cartItems = new ArrayList<>();
+
+    private List<CartItemDTO> cartItemDTOS = new ArrayList<>();
 
     public ShoppingCart() {
     }
 
     BigDecimal getTotalPrice() {
         BigDecimal total  = BigDecimal.valueOf(0);
-        for (CartItem i : cartItems) {
+        for (CartItemDTO i : cartItemDTOS) {
             BigDecimal iPrice  = i.getProduct().getPrice();
             iPrice = iPrice.multiply(BigDecimal.valueOf(i.getQuantity()));
             total = total.add(iPrice);
@@ -24,8 +24,8 @@ public class ShoppingCart {
         return total;
     }
 
-    void addCartItem(CartItem cartItem) {
-        this.cartItems.add(cartItem);
+    void addCartItem(CartItemDTO cartItem) {
+        this.cartItemDTOS.add(cartItem);
 
     }
 

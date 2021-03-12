@@ -2,6 +2,7 @@ package com.example.pizzeria.order;
 
 import com.example.pizzeria.product.Product;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
@@ -9,8 +10,9 @@ import javax.persistence.*;
 
 
 @Data
+@Getter
 @Entity
-@Table(name = "cart")
+@Table(name = "orders_products")
 public class CartItem {
 
     @EmbeddedId
@@ -18,18 +20,20 @@ public class CartItem {
 
     private Integer quantity;
 
+
     @ManyToOne
     @MapsId("productId")
-    @JoinColumn(name = "products_id")
+    @JoinColumn(name = "product_id")
     private Product product;
 
     @ManyToOne
     @MapsId("orderId")
-    @JoinColumn(name = "orders_id")
+    @JoinColumn(name = "order_id")
     private Order order;
 
     public CartItem() {
     }
+
 
     public CartItem(CartItemKey id, Integer quantity, Product product, Order order) {
         this.id = id;

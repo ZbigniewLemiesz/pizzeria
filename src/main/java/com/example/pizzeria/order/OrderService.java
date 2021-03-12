@@ -16,7 +16,7 @@ public class OrderService {
 
     public Order updateOrderFromShoppingCart(ShoppingCart shoppingCart,Order order){
         order.setStatus("new");
-        order.setCarts(shoppingCart.getCartItems());
+        //order.setCarts(shoppingCart.getCartItems());
         return order;
     }
 
