@@ -9,14 +9,14 @@ import java.util.List;
 @Data
 public class ShoppingCart {
 
-    private List<CartItemDTO> cartItemDTOS = new ArrayList<>();
+    private List<CartItemDTO> cartItemDTOs = new ArrayList<>();
 
     public ShoppingCart() {
     }
 
     BigDecimal getTotalPrice() {
         BigDecimal total  = BigDecimal.valueOf(0);
-        for (CartItemDTO i : cartItemDTOS) {
+        for (CartItemDTO i : cartItemDTOs) {
             BigDecimal iPrice  = i.getProduct().getPrice();
             iPrice = iPrice.multiply(BigDecimal.valueOf(i.getQuantity()));
             total = total.add(iPrice);
@@ -25,8 +25,9 @@ public class ShoppingCart {
     }
 
     void addCartItem(CartItemDTO cartItem) {
-        this.cartItemDTOS.add(cartItem);
+        this.cartItemDTOs.add(cartItem);
 
     }
 
 }
+

@@ -1,10 +1,10 @@
 package com.example.pizzeria.order;
+import com.example.pizzeria.client.Client;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.sql.Date;
-import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -14,7 +14,7 @@ public class Order {
 
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String status;
     @Column(name="created_at")
@@ -24,10 +24,14 @@ public class Order {
     @OneToMany(targetEntity=CartItem.class, mappedBy="order",cascade=CascadeType.ALL, fetch = FetchType.LAZY)
     private List<CartItem> items = new ArrayList<>();
 
+    @ManyToOne
+    private Client client;
+
+
 
     @PrePersist
     void createdAt() {
-        this.createdAt = Date.valueOf(LocalDate.now()) ;
+        this.createdAt = new Date() ;
     }
 
     public Order() {

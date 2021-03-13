@@ -23,7 +23,8 @@
 
         <div class="shoppin_cart" >
 
-            <form action="/order/order" method="get">
+            <form action="/order/order" method="post">
+                <input type="hidden" name="itemList" th:value="${itemList}">
                 <button>Zamawiam</button>
             </form>
 

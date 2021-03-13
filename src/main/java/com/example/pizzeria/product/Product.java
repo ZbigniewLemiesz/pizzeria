@@ -26,7 +26,6 @@ public class Product {
     @OneToMany(targetEntity=CartItem.class, mappedBy="product",cascade=CascadeType.ALL, fetch = FetchType.LAZY)
     private List<CartItem> items = new ArrayList<>();
 
-
     public Product() {
     }
 }

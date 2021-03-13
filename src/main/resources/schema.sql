@@ -20,9 +20,7 @@ CREATE TABLE IF NOT EXISTS orders (
   FOREIGN KEY (client_id) REFERENCES clients (id)
 );
 
-INSERT INTO orders VALUES (1,'new','2020-01-01',1),(2,'new','2021-01-01',2);
-
-
+INSERT INTO orders (id,status,created_at,client_id ) VALUES (1,'new','2020-01-01',1),(2,'new','2021-01-01',2);
 
 CREATE TABLE IF NOT EXISTS products (
   id bigint NOT NULL,
