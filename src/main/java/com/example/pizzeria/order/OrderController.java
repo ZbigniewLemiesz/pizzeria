@@ -58,5 +58,11 @@ public class OrderController {
         return "ShoppingCart";
     }
 
+    @GetMapping("/order/order")
+    public String order() {
+
+        return "OrderStatement";
+    }
+
 
 }

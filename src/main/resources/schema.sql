@@ -8,19 +8,19 @@ CREATE TABLE IF NOT EXISTS  clients (
   PRIMARY KEY (id)
 ) ;
 
-INSERT INTO clients VALUES (1,'Jack','jack@gmail.com','123123'),(2,'Ann','ann@gmail.com','123123');
+INSERT INTO clients VALUES (1,'Jack','jack@gmail.com','123123'),(2,'Ann','ann@gmail.com','123123'),(3,'Maria','maria@gmail.com','123123');
 
 
 CREATE TABLE IF NOT EXISTS orders (
   id int NOT NULL AUTO_INCREMENT,
   status varchar(45) DEFAULT NULL, 
-  createdAt datetime DEFAULT NULL,
+  created_at date DEFAULT NULL,
   client_id int NOT NULL,
   PRIMARY KEY (id),
   FOREIGN KEY (client_id) REFERENCES clients (id)
 );
 
-INSERT INTO orders VALUES (1,'new','2020-01-01 10:10:10',1),(2,'new','2021-01-01 10:10:10',2);
+INSERT INTO orders VALUES (1,'new','2020-01-01',1),(2,'new','2021-01-01',2);
 
 
 
@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS products (
   PRIMARY KEY (id)
 );
 
-INSERT INTO products VALUES (1,'Meal1','Lorem ipsum meal1',1.01),(2,'Meal2','Lorem ipsum meal2',2.03),(3,'Meal3','Lorem ipsum meal2',3.05);
+INSERT INTO products VALUES (1,'First Meal','Lorem ipsum first meal',1.01),(2,'Second Meal','Lorem ipsum second meal',2.03),(3,'Third Meal','Lorem ipsum third meal',3.05);
 
 
 CREATE TABLE IF NOT EXISTS orders_products (
