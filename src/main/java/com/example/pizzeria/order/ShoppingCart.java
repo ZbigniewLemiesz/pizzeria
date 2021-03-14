@@ -29,5 +29,8 @@ public class ShoppingCart {
 
     }
 
+    public void clear() {
+        this.cartItemDTOs.clear();
+    }
 }
 

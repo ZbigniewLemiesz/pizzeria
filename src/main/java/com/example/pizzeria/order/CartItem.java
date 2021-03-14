@@ -9,7 +9,7 @@ import lombok.RequiredArgsConstructor;
 import javax.persistence.*;
 
 
-@Data
+
 @Getter
 @Entity
 @Table(name = "orders_products")
@@ -41,4 +41,5 @@ public class CartItem {
         this.product = product;
         this.order = order;
     }
+
 }

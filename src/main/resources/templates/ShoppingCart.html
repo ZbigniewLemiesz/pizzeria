@@ -21,9 +21,9 @@
             <tr th:text="${totalPrice}"></tr>
         </div>
 
-        <div class="shoppin_cart" >
+        <div class="shopping_cart" >
 
-            <form action="/order/order" method="post">
+            <form action="/order/place" method="post">
                 <input type="hidden" name="itemList" th:value="${itemList}">
                 <button>Zamawiam</button>
             </form>
