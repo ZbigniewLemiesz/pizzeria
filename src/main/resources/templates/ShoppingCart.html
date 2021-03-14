@@ -7,22 +7,31 @@
     <link rel="stylesheet" th:href="@{/static/styles.css}"/>
 </head>
 <body>
-<h2>Twój koszyk</h2>
-<img th:src="@{/images/pizzeria_logo.png}"/>
-<div class="container">
-    <div class="items" th:each="item :${itemList}">
-        <td th:text="${item.product.getName()}"></td>
-        <td th:text="${item.getQuantity()}"></td>
+    <h2>Twój koszyk</h2>
+    <img th:src="@{/images/pizzeria_logo.png}"/>
+    <div class="container">
+        <div class="items" th:each="item :${itemList}">
+            <td th:text="${item.product.getName()}"></td>
+            <td th:text="${item.getQuantity()}"></td>
+
+        </div>
+
+        <div class="shopping-cart">
+            <h3>łączna cena</h3>
+            <tr th:text="${totalPrice}"></tr>
+        </div>
+
+        <div class="shopping_cart" >
+
+            <form action="/order/place" method="post">
+                <input type="hidden" name="itemList" th:value="${itemList}">
+                <button>Zamawiam</button>
+            </form>
+
+        </div>
+
 
     </div>
-
-    <div class="shopping-cart">
-        <h3>łączna cena</h3>
-        <tr th:text="${totalPrice}"></tr>
-    </div>
-
-
-</div>
 
 </body>
 </html>

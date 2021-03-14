@@ -27,7 +27,7 @@ public class ProductService {
                 collect(Collectors.toList());
     }
 
-    public Product getProduct(long id) {
+    public Product getProduct(Long id) {
         return productRepository
                 .findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Product not found"));

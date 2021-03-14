@@ -4,6 +4,8 @@ import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @Data
 public class OrderService {
@@ -14,35 +16,18 @@ public class OrderService {
         this.orderRepository = orderRepository;
     }
 
-    public Order updateOrderFromShoppingCart(ShoppingCart shoppingCart,Order order){
-        order.setStatus("new");
-        //order.setCarts(shoppingCart.getCartItems());
+    public Optional<Order> findOrderById(Long id){
+        Optional<Order> order = orderRepository.findById(id);
         return order;
     }
 
-    public void save(Order order){
-        orderRepository.save(order);
-    }
-
-    public Order saveNewOrder(){
-        Order order = new Order();
+    public Order saveOrder(Order order){
         orderRepository.save(order);
         return order;
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    public void update(Order order) {
+        orderRepository.save(order);
+    }
 }
