@@ -1,17 +1,57 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Pizzeria</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" th:href="@{https://use.fontawesome.com/releases/v5.6.3/css/all.css}">
+    <link rel="stylesheet" th:href="@{/style.css}"/>
 </head>
 <body>
-<h1>Witaj w Pizzerii</h1>
-    <img th:src="@{/images/pizzeria_logo.png}"/>
-
-    <a th:href="@{/order}"/>Przygotuj zamówienie</a> |
-    <a th:href="@{/authorization}"/>Logowanie</a> |
-    <a th:href="@{/register}" />Rejestracja</a>
+    <header>
+        <nav>
+            <ul>
+                <li class="navItem"><a th:href="@{/}"/>START</a></li>
+                <li class="navItem"><a th:href="@{/order}"/>MENU</a></li>
+                <li class="navItem"><a th:href="@{/order/cart}"/>Koszyk</a></li>
+                <li class="navItem"><a th:href="@{/authorization}"/>LOGOWANIE</a></li>
+                <li class="navItem"><a href="#contact">Kontakt</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section id="slider" class="slider">
+        <div class="heading-box">
+            <h1>Welcome in Pizza Bar</h1>
+            <h2>Taste our awesome products</h2>
+            <a href="#features" class="btn">
+                More <i class="fas fa-arrow-down"></i>
+            </a>
+        </div>
+    </section>
+    <footer>
+        <div class="flex-container">
+            <div class="flex-item">
+                <ul class="social">
+                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+                </ul>
+            </div>
+            <div class="copy flex-item">
+                <p>&copy; 2020 PizzaBar<p>
+            </div>
+            <div class="flex-item">
+                <ul class="sitemap">
+                    <li><a href="#" >Contact Us</a></li>
+                    <li><a href="#">List of stores</a></li>
+                    <li><a href="#">Blog<i class="fas fa-arrow-alt-circle-up"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>  
 
 </body>
 </html>
