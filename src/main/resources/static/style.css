@@ -96,7 +96,7 @@ nav ul {
 }
 
 .btn{
-    font-size: 1.5em;
+    font-size: 2em;
     margin: 15px auto;
     border: 1px solid #FA7252;
     text-align: center;
@@ -186,8 +186,7 @@ nav ul {
 }
 
 .product .btn {
-    width: 155px;
-	background-color: #FA7252
+    width: 215px;
 }
 
 .container{
@@ -286,7 +285,8 @@ footer .flex-container {
 }
 
 .copy > p {
-    font-size: 1.3em;
+    font-size: 1.5em;
+    text-shadow: 2px 3px 4px rgb(216, 64, 30);
 }
 
 @media(max-width:480px) {
@@ -333,18 +333,6 @@ footer .flex-container {
         top: 50%;
         right: 10%;
     }
-	
-	.product td::before {
-        top: 50%;
-        left: 10%;
-    }
-	
-	.product td::after {
-        top: 50%;
-        right: 10%;
-    }
-	
-	
 
     .gallery-box {
         margin: 0;

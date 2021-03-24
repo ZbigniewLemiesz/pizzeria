@@ -76,7 +76,7 @@ public class OrderController {
     }
 
     @PostMapping ("order/place")
-    public String processOrder(SessionStatus sessionStatus) {
+    public String processOrder(Model model, SessionStatus sessionStatus) {
         Order order = new Order();
         order.setCreatedAt(new Date());
         order.setStatus("new");
@@ -94,8 +94,10 @@ public class OrderController {
         order.setItems(items);
         orderService.update(order);
         sessionStatus.setComplete();
+        model.addAttribute("order", order);
         return "OrderSummary";
     }
+
 
 
 }
