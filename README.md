@@ -1,1 +1,1 @@
-web application that allows user to order a pizza prepared from selected ingredients
+web application for restaurants to sell meals over the internet
