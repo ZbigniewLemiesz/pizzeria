@@ -1,26 +1,83 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Pizzeria</title>
-    <link rel="stylesheet" th:href="@{/static/styles.css}"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" th:href="@{https://use.fontawesome.com/releases/v5.6.3/css/all.css}">
+    <link rel="stylesheet" th:href="@{/style.css}"/>
 </head>
 <body>
-    <h2>Zamówienie zostało przyjęte do realizacji</h2>
-    <img th:src="@{/images/pizzeria_logo.png}"/>
-    <div class="container">
+    <header>
+        <nav>
+            <ul>
+                <li class="navItem"><a th:href="@{/}"/>START</a></li>
+                <li class="navItem"><a th:href="@{/order}"/>MENU</a></li>
+                <li class="navItem"><a th:href="@{/order/cart}"/>Koszyk</a></li>
+                <li class="navItem"><a th:href="@{/authorization}"/>LOGOWANIE</a></li>
+                <li class="navItem"><a href="#contact">Kontakt</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section id="product" class="product">				
+		<div class="container">
+			
+			<div class="flex-container">
+			
+				<div class="flex-item">
+					<img th:src="@{/images/pizzeria_logo.png}"/>
+				</div>
+				
+				<div class="flex-item">
+					<h2>Thank You</h2>
+                    <h3>Order's details</h3>
+					<table width="300" cellpadding="3" cellspacing="5" border="1">
+				
+						<tr>
+							<td>Order's number</td>
+							<td th:text="${order.id}"></td>
+							</br>
+						</tr>						
+						
+						<tr>
+							<td>Order's date</td>
+							<td th:text="${order.createdAt}"></td>
+							</br>
+						</tr>
+					</table>
 
-        <div class="shoppin_cart" >
-
-            <form action="/" method="get">
-                <button>OK</button>
-            </form>
-
+                    <a th:href="@{/}" class="btn">
+                        OK <i class="fas fa-arrow-down"></i>
+                    </a>
+				</div>
+			</div>	
+		</div>
+				
+    </section>
+    <footer>
+        <div class="flex-container">
+            <div class="flex-item">
+                <ul class="social">
+                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+                </ul>
+            </div>
+            <div class="copy flex-item">
+                <p>&copy; 2020 PizzaBar<p>
+            </div>
+            <div class="flex-item">
+                <ul class="sitemap">
+                    <li><a href="#" >Contact Us</a></li>
+                    <li><a href="#">List of stores</a></li>
+                    <li><a href="#">Blog<i class="fas fa-arrow-alt-circle-up"></i></a></li>
+                </ul>
+            </div>
         </div>
-
-
-    </div>
+    </footer>  
 
 </body>
 </html>
