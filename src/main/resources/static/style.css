@@ -186,7 +186,8 @@ nav ul {
 }
 
 .product .btn {
-    width: 215px;
+    width: 155px;
+	background-color: #FA7252
 }
 
 .container{
@@ -332,6 +333,18 @@ footer .flex-container {
         top: 50%;
         right: 10%;
     }
+	
+	.product td::before {
+        top: 50%;
+        left: 10%;
+    }
+	
+	.product td::after {
+        top: 50%;
+        right: 10%;
+    }
+	
+	
 
     .gallery-box {
         margin: 0;
