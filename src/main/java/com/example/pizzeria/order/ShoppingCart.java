@@ -3,13 +3,13 @@ package com.example.pizzeria.order;
 import lombok.Data;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 public class ShoppingCart {
 
-    private List<CartItemDTO> cartItemDTOs = new ArrayList<>();
+    private Set<CartItemDTO> cartItemDTOs = new HashSet<>();
 
     public ShoppingCart() {
     }
@@ -26,11 +26,13 @@ public class ShoppingCart {
 
     void addCartItem(CartItemDTO cartItem) {
         this.cartItemDTOs.add(cartItem);
-
     }
 
     public void clear() {
         this.cartItemDTOs.clear();
     }
+
+
+
 }
 

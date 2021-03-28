@@ -17,6 +17,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 
 @Controller
@@ -68,7 +69,7 @@ public class OrderController {
 
     @GetMapping("/order/cart")
     public String showCart(Model model) {
-        List<CartItemDTO> cartItemDTOS = shoppingCart.getCartItemDTOs();
+        Set<CartItemDTO> cartItemDTOS = shoppingCart.getCartItemDTOs();
         model.addAttribute("itemList", cartItemDTOS);
         BigDecimal totalPrice = shoppingCart.getTotalPrice();
         model.addAttribute("totalPrice",totalPrice);
