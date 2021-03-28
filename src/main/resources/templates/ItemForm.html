@@ -34,7 +34,7 @@
 						<p th:text="${item.description}"/>
 						<p th:text="${item.price}"> zł </p>
 						<input type="hidden" name="productId" th:value="${item.id}">
-						<input type="number" step="1"  name = "quantity" placeholder="wpisz ile chcesz porcji">szt<br>
+						<input type="number" step="1" min="1" name = "quantity" placeholder="wpisz ile chcesz porcji">szt<br>
 						<button>Add to cart</button>						
 					</form>
 				</div>			
