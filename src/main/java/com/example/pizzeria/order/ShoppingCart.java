@@ -4,14 +4,20 @@ import lombok.Data;
 
 import java.math.BigDecimal;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 @Data
 public class ShoppingCart {
 
-    private Set<CartItemDTO> cartItemDTOs = new HashSet<>();
+    private Set<CartItemDTO> cartItemDTOs;
 
     public ShoppingCart() {
+        cartItemDTOs= new HashSet<>();
+    }
+
+    public ShoppingCart(Set<CartItemDTO> cartItemDTOs) {
+        this.cartItemDTOs = cartItemDTOs;
     }
 
     BigDecimal getTotalPrice() {
@@ -31,8 +37,5 @@ public class ShoppingCart {
     public void clear() {
         this.cartItemDTOs.clear();
     }
-
-
-
 }
 

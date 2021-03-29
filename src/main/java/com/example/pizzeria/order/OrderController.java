@@ -42,7 +42,7 @@ public class OrderController {
     public String createShoppingCart(Model model) {
         if (shoppingCart == null) {
             shoppingCart = new ShoppingCart();
-        }else shoppingCart.clear();
+        }
         List<ProductDTO> itemList = productService.findProducts();
         model.addAttribute("itemList", itemList);
         return "ItemForm";
@@ -87,14 +87,15 @@ public class OrderController {
         List<CartItem> items = new ArrayList<>();
 
         for (CartItemDTO i: shoppingCart.getCartItemDTOs()) {
-            i.setOrder(order);
-            CartItem cartItem = cartItemService.getCartItemFromDTO(i);
+            //i.setOrder(order);
+            CartItem cartItem = cartItemService.getCartItemFromDTO(i,order);
             items.add(cartItem);
             cartItemService.save(cartItem);
         }
         order.setItems(items);
         orderService.update(order);
         sessionStatus.setComplete();
+        shoppingCart.clear();
         model.addAttribute("order", order);
         return "OrderSummary";
     }

@@ -11,7 +11,6 @@ import java.util.Objects;
 public class CartItemDTO {
     private Product product;
     private Integer quantity;
-    private Order order;
 
     public CartItemDTO() {
     }
@@ -26,11 +25,11 @@ public class CartItemDTO {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         CartItemDTO that = (CartItemDTO) o;
-        return Objects.equals(product, that.product);
+        return product.getId().equals(that.product.getId());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(product);
+        return Objects.hash(product.getId());
     }
 }
