@@ -17,6 +17,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 
 @Controller
@@ -41,7 +42,7 @@ public class OrderController {
     public String createShoppingCart(Model model) {
         if (shoppingCart == null) {
             shoppingCart = new ShoppingCart();
-        }else shoppingCart.clear();
+        }
         List<ProductDTO> itemList = productService.findProducts();
         model.addAttribute("itemList", itemList);
         return "ItemForm";
@@ -68,7 +69,7 @@ public class OrderController {
 
     @GetMapping("/order/cart")
     public String showCart(Model model) {
-        List<CartItemDTO> cartItemDTOS = shoppingCart.getCartItemDTOs();
+        Set<CartItemDTO> cartItemDTOS = shoppingCart.getCartItemDTOs();
         model.addAttribute("itemList", cartItemDTOS);
         BigDecimal totalPrice = shoppingCart.getTotalPrice();
         model.addAttribute("totalPrice",totalPrice);
@@ -86,14 +87,15 @@ public class OrderController {
         List<CartItem> items = new ArrayList<>();
 
         for (CartItemDTO i: shoppingCart.getCartItemDTOs()) {
-            i.setOrder(order);
-            CartItem cartItem = cartItemService.getCartItemFromDTO(i);
+            //i.setOrder(order);
+            CartItem cartItem = cartItemService.getCartItemFromDTO(i,order);
             items.add(cartItem);
             cartItemService.save(cartItem);
         }
         order.setItems(items);
         orderService.update(order);
         sessionStatus.setComplete();
+        shoppingCart.clear();
         model.addAttribute("order", order);
         return "OrderSummary";
     }

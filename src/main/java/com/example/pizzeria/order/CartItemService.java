@@ -15,9 +15,9 @@ public class CartItemService {
         this.cartItemRepository = cartItemRepository;
     }
 
-    public CartItem getCartItemFromDTO(CartItemDTO cartItemDTO){
-        CartItemKey cartItemKey = new CartItemKey(cartItemDTO.getProduct().getId(), cartItemDTO.getOrder().getId());
-        return new CartItem(cartItemKey,cartItemDTO.getQuantity(), cartItemDTO.getProduct(), cartItemDTO.getOrder());
+    public CartItem getCartItemFromDTO(CartItemDTO cartItemDTO,Order order){
+        CartItemKey cartItemKey = new CartItemKey(cartItemDTO.getProduct().getId(), order.getId());
+        return new CartItem(cartItemKey,cartItemDTO.getQuantity(), cartItemDTO.getProduct(), order);
     }
 
     public CartItem save(CartItem cartItem){
