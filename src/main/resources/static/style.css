@@ -149,6 +149,13 @@ nav ul {
     width: 50%;
     padding: 25px;
 }
+.form, input, select, textarea {
+    margin:0;
+    padding:0;
+    background: #FA7252;
+    color: #404446;
+    text-align: right;
+}
 
 .product img {
     width: 100%;
@@ -208,7 +215,6 @@ nav ul {
     font-size: 1rem;
     text-align: center;
     padding: 4rem;
-    background: url('./images/Droga.jpg');
     background-size: cover;
   }
 
@@ -366,4 +372,5 @@ footer .flex-container {
     .sitemap li {
         margin-bottom: 16px;
     }
+
 }
