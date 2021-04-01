@@ -28,7 +28,7 @@ public class OrderController {
     private final OrderService orderService;
     private final CartItemService cartItemService;
     private final ClientService clientService;
-    private ShoppingCart shoppingCart;
+    private final ShoppingCart shoppingCart = new ShoppingCart();
 
     @Autowired
     public OrderController(ProductService productService, OrderService orderService, CartItemService cartItemService,ClientService clientService) {
@@ -36,16 +36,6 @@ public class OrderController {
         this.orderService = orderService;
         this.cartItemService = cartItemService;
         this.clientService = clientService;
-    }
-
-    @GetMapping("/order")
-    public String createShoppingCart(Model model) {
-        if (shoppingCart == null) {
-            shoppingCart = new ShoppingCart();
-        }
-        List<ProductDTO> itemList = productService.findProducts();
-        model.addAttribute("itemList", itemList);
-        return "ItemForm";
     }
 
 
@@ -69,11 +59,22 @@ public class OrderController {
 
     @GetMapping("/order/cart")
     public String showCart(Model model) {
-        Set<CartItemDTO> cartItemDTOS = shoppingCart.getCartItemDTOs();
-        model.addAttribute("itemList", cartItemDTOS);
+        Set<CartItemDTO> cartItemDTOs = shoppingCart.getCartItemDTOs();
+        model.addAttribute("itemList", cartItemDTOs);
         BigDecimal totalPrice = shoppingCart.getTotalPrice();
         model.addAttribute("totalPrice",totalPrice);
         return "ShoppingCart";
+    }
+    @GetMapping("/order/updateCart")
+    public String updateCart(@RequestParam Integer quantity,
+                             @RequestParam Long productId)
+    {
+        Product product = productService.getProduct(productId);
+        CartItemDTO cartItemDTO = new CartItemDTO();
+        cartItemDTO.setProduct(product);
+        cartItemDTO.setQuantity(quantity);
+        shoppingCart.updateCartItem(cartItemDTO);
+        return "redirect:/order/cart";
     }
 
     @PostMapping ("order/place")
@@ -99,8 +100,5 @@ public class OrderController {
         model.addAttribute("order", order);
         return "OrderSummary";
     }
-
-
-
 }
 

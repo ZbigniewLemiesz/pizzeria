@@ -15,8 +15,8 @@
         <nav>
             <ul>
                 <li class="navItem"><a th:href="@{/}"/>START</a></li>
-                <li class="navItem"><a th:href="@{/order}"/>MENU</a></li>
-                <li class="navItem"><a th:href="@{/order/cart}"/>Koszyk</a></li>
+                <li class="navItem"><a th:href="@{/order/items}"/>MENU</a></li>
+                <li class="navItem"><a th:href="@{/order/cart}" />Koszyk</a></li>
                 <li class="navItem"><a th:href="@{/authorization}"/>LOGOWANIE</a></li>
                 <li class="navItem"><a href="#contact">Kontakt</a></li>
             </ul>
@@ -33,23 +33,28 @@
 				
 				<div class="flex-item">
 					<h2>Twój koszyk</h2>
-					<table width="300" cellpadding="3" cellspacing="5" border="1">
+					<table width="300" cellpadding="1" cellspacing="1" border="1">
 				
 						<tr >
 							<td>Product</td>
 							<td>Quantity</td>
+                            <td>Action</td>
 							</br>
 						</tr>						
 						
 						<tr  th:each="item :${itemList}">
-							<td th:text="${item.product.getName()}"></td>
-							<td th:text="${item.getQuantity()}"></td>
-							</br>
+                            <form action="/order/updateCart" >
+                                <input type="hidden" name="productId" th:value="${item.product.getId()}">
+                                <td th:text="${item.product.getName()}"></td>
+                                <td><input type="number" step="1" min="0" name = "quantity" th:value="${item.getQuantity()}"></td>
+                                <td><button>Update</button></td>
+                            </form>
 						</tr>							
 							
 						<tr>
 							<td>łączna cena</td>							
 							<td th:text="${totalPrice}"></td>
+                            <td>EUR</td>
 							</br>
 						</tr>
 					</table>
