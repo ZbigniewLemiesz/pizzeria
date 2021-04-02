@@ -15,7 +15,7 @@
         <nav>
             <ul>
                 <li class="navItem"><a th:href="@{/}"/>START</a></li>
-                <li class="navItem"><a th:href="@{/order}"/>MENU</a></li>
+                <li class="navItem"><a th:href="@{/order/items}"/>MENU</a></li>
                 <li class="navItem"><a th:href="@{/order/cart}"/>Koszyk</a></li>
                 <li class="navItem"><a th:href="@{/authorization}"/>LOGOWANIE</a></li>
                 <li class="navItem"><a href="#contact">Kontakt</a></li>
@@ -24,25 +24,25 @@
     </header>
     <section id="slider" class="slider">
         <div class="heading-box">
-            <h1>Taste our awesome meals</h1>
+            <h1>Menu</h1>
             			
 			<div class="flex-container" >				
 
 				<div class="flex-item" th:each="item :${itemList}">				
-					<form action="/order/addItems" method="get">						
+					<form action="/order/addItems">
 						<h4 th:text="${item.name}" />
 						<p th:text="${item.description}"/>
-						<p th:text="${item.price}"> zł </p>
+						<p th:text="|Price: ${item.price} EUR|"> zł </p>
 						<input type="hidden" name="productId" th:value="${item.id}">
 						<input type="number" step="1" min="1" name = "quantity" placeholder="wpisz ile chcesz porcji">szt<br>
-						<button>Add to cart</button>						
+						<button>Add to cart<i class="fas fa-cart-plus"></i></button>
 					</form>
 				</div>			
 
 			</div>
 			
             <a href="/order/cart" class="btn">
-               See your shopping cart <i class="fas fa-arrow-down"></i>
+               <i class="fas fa-shopping-cart"></i>
             </a>
 			
         </div>

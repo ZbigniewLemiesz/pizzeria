@@ -12,7 +12,7 @@
     <artifactId>pizzeria</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>pizzeria</name>
-    <description>Demo project for Spring Boot</description>
+    <description>web multi page application (MPA) for restaurants to sell meals over the internet</description>
 
     <properties>
         <java.version>11</java.version>

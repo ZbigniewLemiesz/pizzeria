@@ -1,14 +1,14 @@
 package com.example.pizzeria.order;
 
 import lombok.Data;
-
+import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 @Data
+@Service
 public class ShoppingCart {
+    //private static final Singleton INSTANCE = new Singleton();
 
     private Set<CartItemDTO> cartItemDTOs;
 
@@ -31,8 +31,28 @@ public class ShoppingCart {
     }
 
     void addCartItem(CartItemDTO cartItem) {
+        for (CartItemDTO e:cartItemDTOs) {
+            if(cartItem.equals(e)){
+                e.setQuantity(cartItem.getQuantity()+e.getQuantity());
+            }
+        }
         this.cartItemDTOs.add(cartItem);
     }
+
+    void updateCartItem(CartItemDTO cartItem) {
+        for (CartItemDTO e:cartItemDTOs) {
+            if(cartItem.equals(e)){
+                if(cartItem.getQuantity()>0){
+                    e.setQuantity(cartItem.getQuantity());
+                }else{
+                    this.cartItemDTOs.remove(e);
+                }
+            }
+        }
+    }
+
+
+
 
     public void clear() {
         this.cartItemDTOs.clear();

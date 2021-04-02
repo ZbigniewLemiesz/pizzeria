@@ -9,6 +9,8 @@ import java.util.Objects;
 @Data
 @Getter
 public class CartItemDTO {
+    private static final Singleton INSTANCE = new Singleton();
+
     private Product product;
     private Integer quantity;
 
