@@ -1,13 +1,14 @@
 package com.example.pizzeria.order;
 
 import lombok.Data;
-
+import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 import java.util.*;
 
 @Data
+@Service
 public class ShoppingCart {
-    private static final Singleton INSTANCE = new Singleton();
+    //private static final Singleton INSTANCE = new Singleton();
 
     private Set<CartItemDTO> cartItemDTOs;
 

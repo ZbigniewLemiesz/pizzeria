@@ -32,7 +32,7 @@
 				</div>
 				
 				<div class="flex-item">
-					<h2>Thank You</h2>
+					<h2 th:text="|Thank You ${order.client.getUsername()}!|"></h2>
                     <h3>Order's details</h3>
 					<table width="300" cellpadding="3" cellspacing="5" border="1">
 				
