@@ -1,1 +1,1 @@
-web application for restaurants to sell meals over the internet
+web multipage application (MPA) for restaurants to sell meals over the internet
