@@ -46,9 +46,10 @@ public class OrderController {
         return "ItemForm";
     }
 
-    @GetMapping("/order/addItems")
+    @PostMapping("/order/addItems")
     public String addItemsToThaCart(@RequestParam Integer quantity,
                                     @RequestParam Long productId) {
+        if(quantity==null) return "redirect:/order/items";
         Product product = productService.getProduct(productId);
         CartItemDTO cartItemDTO = new CartItemDTO();
         cartItemDTO.setProduct(product);
@@ -79,6 +80,7 @@ public class OrderController {
 
     @PostMapping ("order/place")
     public String processOrder(Model model, SessionStatus sessionStatus) {
+        if(shoppingCart.getCartItemDTOs().size()==0) return "redirect:/order/items";
         Order order = new Order();
         order.setCreatedAt(new Date());
         order.setStatus("new");

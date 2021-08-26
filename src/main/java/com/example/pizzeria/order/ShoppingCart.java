@@ -46,13 +46,11 @@ public class ShoppingCart {
                     e.setQuantity(cartItem.getQuantity());
                 }else{
                     this.cartItemDTOs.remove(e);
+                    break;
                 }
             }
         }
     }
-
-
-
 
     public void clear() {
         this.cartItemDTOs.clear();
